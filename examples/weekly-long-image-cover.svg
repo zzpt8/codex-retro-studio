@@ -1,0 +1,65 @@
+<svg width="1600" height="980" viewBox="0 0 1600 980" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="160" y1="80" x2="1440" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7F7F5"/>
+      <stop offset="1" stop-color="#ECECE8"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(320 120) rotate(38) scale(460 320)">
+      <stop stop-color="white" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="164" y="134" width="1272" height="712" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="18"/>
+      <feGaussianBlur stdDeviation="24"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.0980392 0 0 0 0 0.0980392 0 0 0 0 0.0980392 0 0 0 0.08 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_2"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_2" result="shape"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="980" fill="url(#bg)"/>
+  <rect width="1600" height="980" fill="url(#glow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="212" y="164" width="1176" height="616" rx="16" fill="white" fill-opacity="0.82"/>
+    <rect x="212.5" y="164.5" width="1175" height="615" rx="15.5" stroke="#181818" stroke-opacity="0.1"/>
+  </g>
+
+  <text x="280" y="246" fill="#5F5F5B" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="20">Codex Retro Studio / Weekly Long Image Example</text>
+
+  <text x="280" y="340" fill="#151515" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="66" font-weight="700">
+    <tspan x="280" dy="0">这周不是没进展，而是已经出现了</tspan>
+    <tspan x="280" dy="86">“能落地”和“会膨胀”两条明显分叉。</tspan>
+  </text>
+
+  <text x="280" y="500" fill="#5F5F5B" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="27">
+    <tspan x="280" dy="0">真正推进的一条线，是把 Recordly 从问题排查推到可用版本。</tspan>
+    <tspan x="280" dy="42">开始拖慢节奏的一条线，是复盘、包装、skill 整理在同一时间并行扩张。</tspan>
+  </text>
+
+  <rect x="280" y="574" width="222" height="44" rx="22" fill="#EFF4FF"/>
+  <text x="316" y="603" fill="#2B62D9" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="20" font-weight="600">weekly + report + visual</text>
+
+  <rect x="526" y="574" width="162" height="44" rx="22" fill="white" fill-opacity="0.82" stroke="#181818" stroke-opacity="0.12"/>
+  <text x="562" y="603" fill="#5F5F5B" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="20">长图骨架示例</text>
+
+  <g>
+    <rect x="280" y="654" width="308" height="78" rx="12" fill="white" fill-opacity="0.92" stroke="#181818" stroke-opacity="0.1"/>
+    <text x="306" y="685" fill="#1F7A46" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700">真正闭环</text>
+    <text x="306" y="717" fill="#151515" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="24" font-weight="600">Recordly 已进入可用阶段</text>
+  </g>
+
+  <g>
+    <rect x="608" y="654" width="308" height="78" rx="12" fill="white" fill-opacity="0.92" stroke="#181818" stroke-opacity="0.1"/>
+    <text x="634" y="685" fill="#A96A00" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700">开始膨胀</text>
+    <text x="634" y="717" fill="#151515" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="24" font-weight="600">复盘体系扩张快于成品</text>
+  </g>
+
+  <g>
+    <rect x="936" y="654" width="308" height="78" rx="12" fill="white" fill-opacity="0.92" stroke="#181818" stroke-opacity="0.1"/>
+    <text x="962" y="685" fill="#5F5F5B" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="700">可复用机会</text>
+    <text x="962" y="717" fill="#151515" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="24" font-weight="600">复盘到包装已具雏形</text>
+  </g>
+</svg>

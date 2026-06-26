@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Retro Studio"
+  short_description: "把Codex复盘、报告重组和长图包装串成一体化流程"
+  default_prompt: "Use $codex-retro-studio to review this week in Codex and package it into a report and long-image draft."

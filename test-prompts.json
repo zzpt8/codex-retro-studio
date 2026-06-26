@@ -1,0 +1,29 @@
+[
+  {
+    "name": "weekly_report_long_image",
+    "prompt": "用 codex-retro-studio 开始周复盘，并输出报告和长图版",
+    "expected": [
+      "先输出本周 Codex 复盘",
+      "再输出报告结构",
+      "再做 PPVI 风格的删并图示化判断",
+      "最后输出长图或页面结构稿"
+    ]
+  },
+  {
+    "name": "monthly_deep_review",
+    "prompt": "用 codex-retro-studio 复盘近一个月 Codex 做了什么，并做成长图结构",
+    "expected": [
+      "区分真正闭环和只是探索",
+      "指出使用习惯和上下文浪费点",
+      "输出适合长图的结构分块"
+    ]
+  },
+  {
+    "name": "chat_only_daily",
+    "prompt": "用 codex-retro-studio 开始每日复盘",
+    "expected": [
+      "只输出聊天版日复盘",
+      "不默认继续做报告和长图"
+    ]
+  }
+]

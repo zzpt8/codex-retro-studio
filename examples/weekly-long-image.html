@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Codex Retro Studio - Weekly Long Image Example</title>
+  <style>
+    :root {
+      --bg: #f3f3f1;
+      --panel: rgba(255, 255, 255, 0.8);
+      --panel-strong: rgba(255, 255, 255, 0.92);
+      --line: rgba(24, 24, 24, 0.12);
+      --text: #151515;
+      --muted: #5f5f5b;
+      --accent: #2b62d9;
+      --good: #1f7a46;
+      --warn: #a96a00;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.9), transparent 32%),
+        linear-gradient(180deg, #f7f7f5 0%, #ecece8 100%);
+    }
+
+    .page {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+
+    .section {
+      margin-bottom: 16px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 12px 30px rgba(25, 25, 25, 0.06);
+    }
+
+    .eyebrow,
+    .meta,
+    .label {
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(36px, 6vw, 56px);
+      line-height: 1.05;
+      font-weight: 650;
+      margin-top: 12px;
+    }
+
+    h2 {
+      font-size: 24px;
+      line-height: 1.2;
+      font-weight: 620;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 16px;
+      line-height: 1.35;
+      font-weight: 620;
+      margin-bottom: 10px;
+    }
+
+    .lead {
+      margin-top: 16px;
+      max-width: 42rem;
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .meta {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .grid-3,
+    .grid-2 {
+      display: grid;
+      gap: 12px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .tile {
+      min-height: 168px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-strong);
+    }
+
+    .tile p,
+    .matrix p,
+    .stack p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .score {
+      margin-top: 12px;
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 640;
+    }
+
+    .matrix {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-strong);
+    }
+
+    .matrix table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .matrix th,
+    .matrix td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .matrix tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .matrix th {
+      color: var(--muted);
+      font-weight: 600;
+      background: rgba(20, 20, 20, 0.02);
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      line-height: 1.2;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      background: rgba(255,255,255,0.72);
+    }
+
+    .pill.good {
+      color: var(--good);
+      border-color: rgba(31, 122, 70, 0.18);
+      background: rgba(31, 122, 70, 0.08);
+    }
+
+    .pill.warn {
+      color: var(--warn);
+      border-color: rgba(169, 106, 0, 0.18);
+      background: rgba(169, 106, 0, 0.08);
+    }
+
+    .compare {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .stack {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-strong);
+    }
+
+    ul {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .chain {
+      display: grid;
+      gap: 10px;
+    }
+
+    .chain-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 14px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-strong);
+      align-items: start;
+    }
+
+    .chain-item .label {
+      color: var(--text);
+      font-weight: 620;
+    }
+
+    .action-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .action {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-strong);
+      min-height: 180px;
+    }
+
+    .action .step {
+      display: inline-flex;
+      width: 28px;
+      height: 28px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: rgba(43, 98, 217, 0.1);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .footer {
+      padding: 18px 4px 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      .grid-3,
+      .grid-2,
+      .compare,
+      .action-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .chain-item {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="section">
+      <div class="eyebrow">Codex Retro Studio / Weekly Long Image Example</div>
+      <h1>这周不是没进展，而是已经出现了“能落地”和“会膨胀”两条明显分叉。</h1>
+      <p class="lead">
+        真正推进的一条线，是把 Recordly 从问题排查推到可用版本。开始拖慢节奏的一条线，是复盘、包装、skill 整理在同一时间并行扩张，导致判断和包装互相抢上下文。
+      </p>
+      <div class="meta">
+        <span>时间窗口：2026-06 第 4 周</span>
+        <span>模式：weekly + report + visual packaging</span>
+        <span>用途：长图 / 页面结构稿骨架</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>三个关键结论</h2>
+      <div class="grid-3">
+        <article class="tile">
+          <div class="pill good">真正闭环</div>
+          <h3>Recordly 已从排错阶段进入可用阶段</h3>
+          <div class="score">01</div>
+          <p>“视频里没有任务栏、摄像头画面正常、已经成了正常可用版本”是这周最清楚的交付证据。</p>
+        </article>
+        <article class="tile">
+          <div class="pill warn">开始膨胀</div>
+          <h3>复盘体系本身扩张得比成品快</h3>
+          <div class="score">02</div>
+          <p>从日复盘、周复盘、深度复盘、月度复盘，再到报告、长图、skill 整合，需求线在持续扩面。</p>
+        </article>
+        <article class="tile">
+          <div class="pill">可复用机会</div>
+          <h3>“复盘到包装”已具备沉淀成 skill 的条件</h3>
+          <div class="score">03</div>
+          <p>这不是普通总结，而是已经形成固定链路、固定交付物、固定审美约束的可复用工作流。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>已落地 / 仅探索对照</h2>
+      <div class="compare">
+        <article class="stack">
+          <div class="pill good">已落地</div>
+          <h3>本周明确成品</h3>
+          <ul>
+            <li>Recordly 可正常使用，核心体验问题已被确认收敛。</li>
+            <li>复盘工作流已经从口头需求压成清晰的固定输出结构。</li>
+            <li>`codex-retro-studio` 已成型为一个可调用的编排型 skill。</li>
+          </ul>
+        </article>
+        <article class="stack">
+          <div class="pill warn">仍在探索</div>
+          <h3>本周仍偏方法建设</h3>
+          <ul>
+            <li>如何把复盘报告继续包装成长图、页面稿、汇报页。</li>
+            <li>如何把 `codex-daily-review` 与 `ppvi` 的协作关系产品化。</li>
+            <li>如何让这个 skill 具备更强的首屏信任和传播能力。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>项目状态矩阵</h2>
+      <div class="matrix">
+        <table>
+          <thead>
+            <tr>
+              <th>项目线</th>
+              <th>状态</th>
+              <th>本周证据</th>
+              <th>下一步</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Recordly</td>
+              <td><span class="pill good">可用版本</span></td>
+              <td>摄像头画面正常，任务栏问题已排除，用户明确确认“正常可用”。</td>
+              <td>整理成对外可讲的版本说明或复盘案例。</td>
+            </tr>
+            <tr>
+              <td>Codex 复盘流程</td>
+              <td><span class="pill good">结构清晰</span></td>
+              <td>日 / 周 / 深度 / 月度复盘边界与格式已梳理清楚。</td>
+              <td>减少模式分叉，优先验证周复盘和深度复盘的真实使用价值。</td>
+            </tr>
+            <tr>
+              <td>codex-retro-studio skill</td>
+              <td><span class="pill good">可调用</span></td>
+              <td>SKILL、README、示例、测试样例、Luban 报告已补齐。</td>
+              <td>补一个真实长图样例和截图，增强首屏信任。</td>
+            </tr>
+            <tr>
+              <td>PPVI 包装链路</td>
+              <td><span class="pill warn">待验证</span></td>
+              <td>视觉重组逻辑已经清楚，但真实产物示例还不够多。</td>
+              <td>用一个月度复盘做完整页面版示例，验证结构是否真好读。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>使用方式诊断</h2>
+      <div class="grid-2">
+        <article class="tile">
+          <div class="pill good">高效率用法</div>
+          <h3>先把需求变成固定输出框架</h3>
+          <p>一旦复盘输出被收敛成固定段落，Codex 的判断、整理、包装明显更稳，不容易每轮都重讲一遍任务。</p>
+        </article>
+        <article class="tile">
+          <div class="pill warn">低效率用法</div>
+          <h3>复盘目标和包装目标同时扩张</h3>
+          <p>一边定义复盘流程，一边定义报告形式，一边定义视觉包装，会让上下文持续分叉，产物闭环速度下降。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>摩擦因果链</h2>
+      <div class="chain">
+        <div class="chain-item">
+          <div class="label">起点</div>
+          <div>需求从“复盘今天做了什么”扩展到“复盘 Codex 一周 / 一月做了什么，并包装成报告和长图”。</div>
+        </div>
+        <div class="chain-item">
+          <div class="label">中段摩擦</div>
+          <div>如果没有中间层，Codex 会在“聊天复盘”和“视觉成品”之间来回跳，容易把探索误写成产出。</div>
+        </div>
+        <div class="chain-item">
+          <div class="label">修正</div>
+          <div>把中间层拆成报告稿与 PPVI 视觉评审，先判断证据，再决定该删、该并、该图示化什么。</div>
+        </div>
+        <div class="chain-item">
+          <div class="label">结果</div>
+          <div>最终形成一个更稳定的编排 skill，而不是每次靠临时追问完成同样的工作。</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>下一步动作格</h2>
+      <div class="action-grid">
+        <article class="action">
+          <div class="step">1</div>
+          <h3>优先补真实示例</h3>
+          <p>用一份已经完成的周复盘或月复盘，走完整条“复盘 -> 报告 -> 长图”链路，留下可复用样板。</p>
+        </article>
+        <article class="action">
+          <div class="step">2</div>
+          <h3>限制模式膨胀</h3>
+          <p>短期只重点验证周复盘和深度复盘，不继续扩更多变体，避免 skill 自己先变复杂。</p>
+        </article>
+        <article class="action">
+          <div class="step">3</div>
+          <h3>把成品前置到 README</h3>
+          <p>下一版把真实截图放到首屏，让别人先看到结果，再去理解结构和方法。</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="footer">
+      示例用途：展示 codex-retro-studio 在“weekly + report + long image”模式下的成品骨架。<br>
+      这不是最终视觉定稿，而是一个可直接继续改造成网页、长图或汇报页的结构样例。
+    </div>
+  </main>
+</body>
+</html>
